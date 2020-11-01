@@ -7,14 +7,13 @@
 # 3) chmod +x my-program
 # 4) ./my-program
 #
-# Since scriptisto cannot hash multiple files yet, and this runner script does not change,
-# mind that you have to rebuild on every Dart source code change with `scriptisto build my-program`.
-#
 # scriptisto-begin
 # script_src: runner
 # build_cmd: cache_dir="$(pwd)" && cd "$(dirname "${SCRIPTISTO_SOURCE}")" && dart2native "cli/main.dart" -o "${cache_dir}/my-dart-program"
 # target_bin: ./runner
 # target_interpreter: /bin/sh
+# hash_additional_paths:
+#   - cli # may contain more Dart source files
 # scriptisto-end
 
 # Since `SCRIPTISTO_CACHE_DIR` is known, more preparations can be done here, such as switching
